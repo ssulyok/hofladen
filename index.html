@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produktliste</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+
+    <style>
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+
+        table {
+            font-size: 23px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>Hofladen Fam. Sulyok - Produktliste</h1>
+        <h2>gültig ab 20.09.2025</h2>
+        <h3>Verarbeitete Produkte werden von uns oder von regionalen Betrieben hergestellt.</h3>
+    </div>
+
+    <table id="liste" style="width:100%;">
+        <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Menge</th>
+                <th>Preis</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody />
+    </table>
+
+    <script>
+        const dataTable = new simpleDatatables.DataTable("#liste", {
+            searchable: false,
+            sortable: true,
+            paging: false,
+        });
+
+        const sldfr = "So lange der Vorrat reicht.";
+        const mfaug = "Mit Früchten aus dem eigenen (oder Omas) Garten."
+
+        const data = [
+            ["Eier", "10Stk.", "3€", "klassisch ein Schachterl"],
+            ["Eier", "1kg", "5€", "Eine Box mit kleineren Eiern."],
+            ["Fadennudeln", "250g", "2,50€", ""],
+            ["Fiorinudeln", "400g", "3€", ""],
+            ["Spiralnudeln", "500g", "3€", ""],
+            ["Hokkaidokürbis", "1Stk", "1,50€", sldfr],
+            ["Kartoffeln", "2kg", "3€", "Sorte: DITTA"],
+            ["Kartoffeln", "5kg", "7€", "Sorte: DITTA"],
+            ["Kirschenmarmelade", "200ml", "4€", sldfr + ' ' + mfaug],
+            ["Kriacherlmarmelade", "200ml", "4€", sldfr + ' ' + mfaug],
+            ["Kürbiskernöl", "1L", "21€", ""],
+            ["Kürbiskernöl", "0.5L", "11€", ""],
+            ["Kürbiskernöl", "0.25L", "6€", ""],
+            ["Weizenmehl W480 Spezial", "1kg", "1,50€", "Glattes Mehl"],
+            ["Sackerl", "1Stk", "0,50€", "aus Papier"]
+        ];
+
+        dataTable.insert({ data });
+    </script>
+</body>
