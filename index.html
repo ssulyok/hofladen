@@ -14,13 +14,21 @@
         table {
             font-size: 23px;
         }
+
+        thead th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1;
+        }
     </style>
 </head>
 
 <body>
     <div style="text-align: center;">
         <h1>Hofladen Fam. Sulyok - Produktliste</h1>
-        <h2>gültig ab 16.10.2025</h2>
+        <h2>gültig ab 21.10.2025</h2>
         <h3>Verarbeitete Produkte werden von uns oder von regionalen Betrieben hergestellt.</h3>
     </div>
 
@@ -30,7 +38,7 @@
                 <th>Produkt</th>
                 <th>Menge</th>
                 <th>Preis</th>
-                <th>Info</th>
+                <th>Bemerkung</th>
             </tr>
         </thead>
         <tbody />
@@ -47,6 +55,7 @@
         const mfaug = "Mit Früchten aus dem eigenen (oder Omas) Garten."
 
         const data = [
+            ["Stoppelrübe", "1Stk", "0,50€", sldfr],
             ["Eier", "10Stk.", "3€", "klassisch ein Schachterl"],
             ["Eier", "1kg", "5€", "Eine Box mit kleineren Eiern."],
             ["Fadennudeln", "250g", "2,50€", ""],
