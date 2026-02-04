@@ -5,6 +5,8 @@
     <title>Produktliste</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/viewerjs@1.11.7/dist/viewer.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/viewerjs@1.11.7/dist/viewer.min.css" rel="stylesheet">
 
     <style>
         tr:nth-child(even) {
@@ -22,6 +24,64 @@
             background: #fff;
             z-index: 1;
         }
+
+          .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-auto-rows: 220px;
+            grid-gap: 15px;
+            grid-auto-flow: dense;
+            margin-bottom: 40px;
+        }
+        
+        .image-grid > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .image-grid > img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+        
+        .image-grid > img[width*="480"] {
+            grid-column: span 2;
+        }
+        
+        .image-grid > img[height*="216"] {
+            grid-row: span 2;
+        }
+        
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                grid-auto-rows: 180px;
+                grid-gap: 12px;
+            }
+            
+            .image-grid > img[width*="480"] {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-auto-rows: 150px;
+                grid-gap: 10px;
+            }
+            
+            .image-grid > img[width*="480"] {
+                grid-column: span 1;
+            }
+        }
+
+        
     </style>
 </head>
 
@@ -42,6 +102,24 @@
         </thead>
         <tbody />
     </table>
+
+<div style="text-align: center;">
+     <h1 style="position: sticky; top: 0; z-index: 100; background-color: white;">Bildergallerie</h1>
+    <div class="image-grid"  id="images">
+        <img src="bilder/banner.jpg" width="480px">
+        <img src="bilder/Apfelsaft.jpg" width="480px">
+        <img src="bilder/Eier_1kg.jpg" width="480px">
+        <img src="bilder/Eier_10Stk.jpg" width="480px">
+        <img src="bilder/Kartoffeln_2kg.jpg" height="216px">
+        <img src="bilder/Kartoffeln_5kg.jpg" height="216px">
+        <img src="bilder/Kürbiskernöl.jpg" width="480px">
+        <img src="bilder/muh.jpg" width="480px">
+        <img src="bilder/Nudeln.jpg" height="216px">
+        <img src="bilder/stall_kickeriki.jpg" width="480px">
+        <img src="bilder/Weizenmehl_W480_Spezial.jpg" height="216px">
+        <img src="bilder/stall_muh.jpg" width="480px">
+    </div>
+</div>
 
     <script>
         const dataTable = new simpleDatatables.DataTable("#liste", {
@@ -74,5 +152,7 @@
         ];
 
         dataTable.insert({ data });
+
+        const gallery = new Viewer(document.getElementById('images'));
     </script>
 </body>
